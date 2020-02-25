@@ -1,7 +1,7 @@
 package models;
 
-
 import javax.persistence.*;
+import java.util.ArrayList;
 
 @Entity
 @Table(name= "departments")
@@ -14,8 +14,12 @@ public class Department {
     @Column(name = "name")
     String name;
 
+    @OneToMany(mappedBy = "department")
+    ArrayList<Employee> employees;
+
     public Department(String name) {
         this.name = name;
+        this.employees = new ArrayList<>();
     }
 
     public Department() {
@@ -35,5 +39,11 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void addEmployee(ArrayList<Employee> employees) {
+        for(Employee employee : employees) {
+            employees.add(employee);
+        }
     }
 }
