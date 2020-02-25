@@ -2,9 +2,9 @@ package com.employee.example.employeeLab;
 
 import com.employee.example.employeeLab.models.Department;
 import com.employee.example.employeeLab.models.Employee;
+import com.employee.example.employeeLab.models.Project;
 import com.employee.example.employeeLab.repositories.DepartmentRepository;
 import com.employee.example.employeeLab.repositories.EmployeeRepository;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,28 +23,23 @@ class EmployeeLabApplicationTests {
 
 	Department department;
 	Employee employee1;
-	Employee employee2;
-
-	@Before
-	public void before() {
-
-		employee2 = new Employee(
-				"Stephen",
-				"Yollop",
-				"998",
-				department
-		);
-	}
+	Project project;
 
 	@Test
 	void contextLoads() {
 	}
 
-//	@Test
-//	public void createDepartment() {
-//		department = new Department("Bean");
-//		departmentRepository.save(department);
-//	}
+	@Test
+	public void createDepartment() {
+		department = new Department("Bean");
+		departmentRepository.save(department);
+	}
+
+	@Test
+	public void createProject() {
+		project = new Project("Bean Project", 123, );
+		departmentRepository.save(department);
+	}
 
 	@Test
 	public void createEmployee() {
