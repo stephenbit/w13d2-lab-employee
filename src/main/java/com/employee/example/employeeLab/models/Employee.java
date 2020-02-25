@@ -1,4 +1,4 @@
-package models;
+package com.employee.example.employeeLab.models;
 
 import javax.persistence.*;
 
@@ -7,16 +7,19 @@ import javax.persistence.*;
 public class Employee {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "First Name")
+    @Column
     String firstName;
 
-    @Column(name = "Last Name")
+    @Column
     String lastName;
 
-    @Column(name = "Employee Number")
+    @Column
     String employeeNumber;
+
+
 
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = false)

@@ -1,19 +1,24 @@
 package com.employee.example.employeeLab;
 
-import models.Department;
-import models.Employee;
-import org.aspectj.lang.annotation.Before;
+import com.employee.example.employeeLab.models.Department;
+import com.employee.example.employeeLab.models.Employee;
+import com.employee.example.employeeLab.repositories.DepartmentRepository;
+import com.employee.example.employeeLab.repositories.EmployeeRepository;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import repositories.DepartmentRepository;
-import repositories.EmployeeRepository;
+import org.springframework.test.context.junit4.SpringRunner;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
 class EmployeeLabApplicationTests {
 
 	@Autowired
 	DepartmentRepository departmentRepository;
+
+	@Autowired
 	EmployeeRepository employeeRepository;
 
 	Department department;
@@ -22,14 +27,8 @@ class EmployeeLabApplicationTests {
 
 	@Before
 	public void before() {
-		department = new Department("Java");
-		employee1 = new Employee(
-				"Silvia",
-				"Jones",
-				"999",
-				department
-		);
-		employee1 = new Employee(
+
+		employee2 = new Employee(
 				"Stephen",
 				"Yollop",
 				"998",
@@ -37,20 +36,27 @@ class EmployeeLabApplicationTests {
 		);
 	}
 
-
 	@Test
 	void contextLoads() {
 	}
 
-	@Test
-	public void createDepartment() {
-		DepartmentRepository.save(employee1);
-		DepartmentRepository.save(employee2);
-	}
+//	@Test
+//	public void createDepartment() {
+//		department = new Department("Bean");
+//		departmentRepository.save(department);
+//	}
 
 	@Test
 	public void createEmployee() {
-
+		department = new Department("Bean");
+		employee1 = new Employee(
+				"Silvia",
+				"Jones",
+				"999",
+				department
+		);
+		departmentRepository.save(department);
+		employeeRepository.save(employee1);
 	}
 
 }
